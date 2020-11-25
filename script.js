@@ -32,6 +32,28 @@ document.querySelector('.btn.btn--roll').addEventListener('click', function(){
     var diceDOM = document.querySelector('.dice');
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
+
+    // 3) Update the round score IF the rolled number was NOT a 1
+    if (dice !== 1)
+    {
+        // add score
+        roundScore += dice;
+        document.querySelector('#current--' + activePlayer).textContent = roundScore;
+    }
+    else
+    {
+        // Next Player
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0
+
+        document.getElementById('current--0').textContent = '0';
+        document.getElementById('current--1').textContent = '0';
+
+        document.querySelector('.player.player--0').classList.toggle("player--active");
+        document.querySelector('.player.player--1').classList.toggle("player--active");
+
+        document.querySelector('.dice').style.display = 'none';
+    }
 })
 
 // We deleted the number and instead concatenated the variable which will determine the player                      
