@@ -10,17 +10,14 @@ GAME RULES:
 
 var scores, roundScore, activePlayer, gamePlaying;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0; // 0 first player and 1 second player
-
-
+init();
 
 // When the button Roll is clicked
 document.querySelector('.btn.btn--roll').addEventListener('click', function(){
     if (gamePlaying){
         // 1) Random number
         var dice = Math.floor(Math.random() * 6 ) + 1;
+
 
         // 2) Display the image of the dice
         var diceDOM = document.querySelector('.dice');
@@ -87,7 +84,7 @@ function nextPlayer()
 function init(){
     scores = [0, 0];
     roundScore = 0;
-    activePlayer = 0;
+    activePlayer = 0; // 0 first player and 1 second player
     gamePlaying = true;
 
     // change the style of an element, Example: hiding the image
